@@ -6,7 +6,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class locatorBrushUp {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 //Primer paso open browser
@@ -27,11 +27,42 @@ driver.get("https://www.rahulshettyacademy.com/locatorspractice/");
 driver.findElement(By.id("inputUsername")).sendKeys("rahul");
 driver.findElement(By.name("inputPassword")).sendKeys("hellow123");
 driver.findElement(By.className("signInBtn")).click();
+
 //Selenium esta procesando rapidamente linea por linea y cuando entra aqui
 //trata de buscar el elemento que aun no existe por que el error dura aproximadamente 2s
 //en aparecer y por ende el p tag aun no existe, por esto hay que ponerle un wait
 //par que espere al menos 5 segundo si un elemento aun no esta visible
 System.out.println(driver.findElement(By.cssSelector("p.error")).getText());
+driver.findElement(By.linkText("Forgot your password?")).click();
+
+//Esto se usa para esperar que los elementos renderisen completamente
+Thread.sleep(1000);
+
+driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("John");
+
+driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("john@rsa.com");
+
+driver.findElement(By.xpath("//input[@type='text'][2]")).clear();
+
+driver.findElement(By.cssSelector("input[type='text']:nth-child(3)")).sendKeys("john@gmail.com");
+
+driver.findElement(By.xpath("//form/input[3]")).sendKeys("9864353253");
+
+driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+
+System.out.println(driver.findElement(By.cssSelector("form p")).getText());
+
+driver.findElement(By.xpath("//div[@class='forgot-pwd-btn-conainer']/button[1]")).click();
+
+Thread.sleep(1000);
+
+driver.findElement(By.cssSelector("#inputUsername")).sendKeys("rahul");
+
+driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
+
+driver.findElement(By.id("chkboxOne")).click();
+
+driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
 
 	}
 
