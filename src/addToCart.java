@@ -39,7 +39,8 @@ public class addToCart {
 				counter++;
 				//In order to save processing time we can create a count variable that will let us know how many time it clicks add cart
 				//If that matches with all our test scenario just then we can break because we know is really over.
-				driver.findElements(By.xpath("//button[text()='ADD TO CART']")).get(i).click();
+				//WARNING do not rely on text that change to find a locator it not a good practice this can impacted on the outcome of the script
+				driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
 				//We need to remove break because we want to iterate for all the element of the array.
 				//break;
 				
